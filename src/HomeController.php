@@ -20,11 +20,17 @@ class HomeController
         return $a - $b;
     }
 
+    /**
+     * This function is for multiplication of two values
+     */
     public function multiply($a, $b)
     {
         return $a * $b;
     }
 
+    /**
+     * This function is for devision of two values
+     */
     public function devided($a, $b)
     {
         return $a / $b;
