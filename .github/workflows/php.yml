@@ -16,7 +16,5 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
       - name: Run PHP Script
         run: php ./src/index.php
