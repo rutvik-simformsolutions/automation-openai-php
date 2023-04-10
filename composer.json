@@ -13,5 +13,7 @@
             "name": "OpenSource Team"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/dotenv": "^5.4"
+    }
 }
