@@ -6,15 +6,27 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit9adf295867395a151621faf9222d51d5
 {
+    public static $files = array (
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'B' => 
+        'S' => 
         array (
-            'Bhavinnakrani\\AutomationOpenai\\' => 31,
+            'Symfony\\Component\\Dotenv\\' => 25,
+        ),
+        'O' => 
+        array (
+            'OpenSource\\AutomationOpenai\\' => 28,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Bhavinnakrani\\AutomationOpenai\\' => 
+        'Symfony\\Component\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
+        ),
+        'OpenSource\\AutomationOpenai\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

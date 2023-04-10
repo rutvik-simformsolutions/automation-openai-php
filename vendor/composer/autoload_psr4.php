@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Bhavinnakrani\\AutomationOpenai\\' => array($baseDir . '/src'),
+    'Symfony\\Component\\Dotenv\\' => array($vendorDir . '/symfony/dotenv'),
+    'OpenSource\\AutomationOpenai\\' => array($baseDir . '/src'),
 );
