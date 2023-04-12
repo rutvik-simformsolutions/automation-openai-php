@@ -1,10 +1,6 @@
-Implement env loader
-class name added in service
-Create service files
-Update README.md
-Readme updated
-Composer command added in workflow
-Checkout uses added in yml
-Set working dir
-Fix namespace issue
-Fix index path
+Update docker file
+Remove edit form from part setting page and added button there
+remove commented code
+disable cache for development.
+implement drag feature
+prepare function for sort
