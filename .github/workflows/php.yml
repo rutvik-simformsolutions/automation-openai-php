@@ -46,4 +46,4 @@ jobs:
       - name: PR Review
         env:
           PR_REVIEW: true
-        run: echo "PR number is ${{ github.repository }}-${{ github.event.number }}"
+        run: echo " PR ${{ github.repository }}-${{ github.event.number }}"
