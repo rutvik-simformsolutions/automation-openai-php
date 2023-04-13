@@ -23,6 +23,7 @@ jobs:
           php-version: '8.2'
       - name: 'Create env file'
         run: |
+          echo "repository variable : ${{ vars.PROJECT_NAME }}"
           touch .env
           echo PROJECT_NAME=${{ vars.PROJECT_NAME }} >> .env
           cat .env
