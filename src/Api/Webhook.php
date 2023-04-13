@@ -12,7 +12,7 @@ class Webhook
 {
     public function __construct()
     {
-        $pageId = $_ENV['BITBUCKET_PAGE'];
+        //$pageId = $_ENV['BITBUCKET_PAGE'];
         $ChatGPTService = new ChatGPTService();
         $BitbucketService = new BitbucketService();
         shell_exec('./script.sh');
