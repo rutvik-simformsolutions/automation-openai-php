@@ -8,6 +8,11 @@ on:
 env:
   # Setting an environment variable with the value of a configuration variable
   PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+  API_KEY: ${{ vars.API_KEY }}
+  BITBUCKET_EMAIL: ${{ vars.BITBUCKET_EMAIL }}
+  BITBUCKET_TOKEN: ${{ vars.BITBUCKET_TOKEN }}
+  CONFLUENCE_SPACEKEY: ${{ vars.CONFLUENCE_SPACEKEY }}
+  CONFLUENCE_URL: ${{ vars.CONFLUENCE_URL }}
 
 jobs:
   build:
