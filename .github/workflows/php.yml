@@ -30,6 +30,11 @@ jobs:
         run: |
           touch .env
           echo PROJECT_NAME="\"${PROJECT_NAME}\"" >> .env
+          echo API_KEY="\"${API_KEY}\"" >> .env
+          echo BITBUCKET_EMAIL="\"${BITBUCKET_EMAIL}\"" >> .env
+          echo BITBUCKET_TOKEN="\"${BITBUCKET_TOKEN}\"" >> .env
+          echo CONFLUENCE_SPACEKEY="\"${CONFLUENCE_SPACEKEY}\"" >> .env
+          echo CONFLUENCE_URL="\"${CONFLUENCE_URL}\"" >> .env
           cat .env
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
