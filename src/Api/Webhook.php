@@ -12,7 +12,8 @@ class Webhook
 {
     public function __construct()
     {
-        $pageId = $_ENV['BITBUCKET_PAGE'];
+        echo $_ENV['PROJECT_NAME'];
+        /*$pageId = $_ENV['BITBUCKET_PAGE'];
         $ChatGPTService = new ChatGPTService();
         $BitbucketService = new BitbucketService();
         shell_exec('./script.sh');
@@ -24,6 +25,6 @@ class Webhook
             $html .= "<tr> <td class='confluenceTd'>$log</td> <td class='confluenceTd'> &#10004; </td> </tr>";
         }
         $html .= "</tbody> </table>";
-        echo $BitbucketService::generateConfluencePage($html,'OpenAI Change Logs '.date('d/m/y H:i'));
+        echo $BitbucketService::generateConfluencePage($html,'OpenAI Change Logs '.date('d/m/y H:i'));*/
     }
 }
