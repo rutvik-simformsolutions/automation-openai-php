@@ -18,16 +18,16 @@ class BitbucketService
             #bit bucket confluence api configuration
             $bitbucketEmail = $_ENV["BITBUCKET_EMAIL"];
             $bitbucketToken = $_ENV["BITBUCKET_TOKEN"];
-            $bitbucketUrl = $_ENV["BITBUCKET_URL"];
-            $bitbucketSpacekey = $_ENV["BITBUCKET_SPACEKEY"];
+            $confluenceUrl = $_ENV["CONFLUENCE_URL"];
+            $confluenceSpacekey = $_ENV["CONFLUENCE_SPACEKEY"];
 
-            if (empty($bitbucketEmail) || empty($bitbucketToken) || empty($bitbucketUrl) || empty($bitbucketSpacekey))
+            if (empty($bitbucketEmail) || empty($bitbucketToken) || empty($confluenceUrl) || empty($confluenceSpacekey))
                 return "Error : Not Enough Configuration Data Available for Bitbucket Confluence Page";
 
             #insilizing Curl Request
             $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, $bitbucketUrl);
+            curl_setopt($ch, CURLOPT_URL, $confluenceUrl);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POST, 1);
 
@@ -38,7 +38,7 @@ class BitbucketService
             $data = [
                 "type" => "page",
                 "title" => $title ?? "New Confluence Page",
-                "space" => ["key" => $bitbucketSpacekey],
+                "space" => ["key" => $confluenceSpacekey],
                 "body" => ["storage" => ["value" => $content, "representation" => "storage"]]
             ];
             $jsonData = json_encode($data);
