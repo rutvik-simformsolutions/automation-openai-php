@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 env:
   # Setting an environment variable with the value of a configuration variable
-  PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+  PROJECT_NAME: '${{ vars.PROJECT_NAME }}'
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env
-          echo PROJECT_NAME="${PROJECT_NAME}" >> .env
+          echo PROJECT_NAME=${PROJECT_NAME} >> .env
           cat .env
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
