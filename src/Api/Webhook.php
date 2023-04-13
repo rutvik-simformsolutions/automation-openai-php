@@ -12,7 +12,7 @@ class Webhook
 {
     public function __construct()
     {
-        echo $_ENV['PROJECT_NAME'];
+        var_dump (getenv('PROJECT_NAME'));
         /*$pageId = $_ENV['BITBUCKET_PAGE'];
         $ChatGPTService = new ChatGPTService();
         $BitbucketService = new BitbucketService();
