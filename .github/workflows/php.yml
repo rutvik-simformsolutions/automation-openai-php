@@ -43,3 +43,7 @@ jobs:
       - name: Run PHP Script
         working-directory: src
         run: php index.php
+      - name: PR Review
+        env:
+          PR_REVIEW: true
+        run: echo "PR number is ${{ github.event.pull_request.number }}"
