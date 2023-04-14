@@ -48,7 +48,7 @@ class Webhook
                 $html = $openAI;
             }
             
-            $bitbucketService::generateConfluencePage($html,'OpenAI Change Logs '.date('d/m/y H:i'));
+            echo $bitbucketService::generateConfluencePage($html,'OpenAI Change Logs '.date('d/m/y H:i'));
         }
     }
 }
