@@ -36,6 +36,8 @@ jobs:
           echo BITBUCKET_TOKEN="\"${BITBUCKET_TOKEN}\"" >> .env
           echo CONFLUENCE_SPACEKEY="\"${CONFLUENCE_SPACEKEY}\"" >> .env
           echo CONFLUENCE_URL="\"${CONFLUENCE_URL}\"" >> .env
+          echo JIRA_URL="\"${JIRA_URL}\"" >> .env
+          echo TASK_URL="\"${TASK_URL}\"" >> .env
           cat .env
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
