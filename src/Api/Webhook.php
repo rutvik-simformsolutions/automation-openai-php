@@ -13,6 +13,7 @@ class Webhook
 {
     public function __construct()
     {
+        var_dump($_ENV['PR_REVIEW']);
         if (isset($_ENV['PR_REVIEW'])) {
             $gitService = new GitService();
 
