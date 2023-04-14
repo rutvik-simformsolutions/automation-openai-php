@@ -5,12 +5,21 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+env:
+  # Setting an environment variable with the value of a configuration variable
+  PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+  API_KEY: ${{ vars.API_KEY }}
+  BITBUCKET_EMAIL: ${{ vars.BITBUCKET_EMAIL }}
+  BITBUCKET_TOKEN: ${{ vars.BITBUCKET_TOKEN }}
+  CONFLUENCE_SPACEKEY: ${{ vars.CONFLUENCE_SPACEKEY }}
+  CONFLUENCE_URL: ${{ vars.CONFLUENCE_URL }}
+  PERSONAL_GITHUB_TOKEN: ${{ vars.PERSONAL_GITHUB_TOKEN }}
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - uses: actions/checkout@v3
       
@@ -18,6 +27,16 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo PROJECT_NAME="\"${PROJECT_NAME}\"" >> .env
+          echo API_KEY="\"${API_KEY}\"" >> .env
+          echo BITBUCKET_EMAIL="\"${BITBUCKET_EMAIL}\"" >> .env
+          echo BITBUCKET_TOKEN="\"${BITBUCKET_TOKEN}\"" >> .env
+          echo CONFLUENCE_SPACEKEY="\"${CONFLUENCE_SPACEKEY}\"" >> .env
+          echo CONFLUENCE_URL="\"${CONFLUENCE_URL}\"" >> .env
+          cat .env
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
       - name: Install dependencies
@@ -25,3 +44,13 @@ jobs:
       - name: Run PHP Script
         working-directory: src
         run: php index.php
+
+      - name: PR Review ENV set
+        run: |
+          echo PR_REVIEW="true" >> .env
+          echo OWNER_AND_REPO_NAME="\"${{ github.repository }}\"" >> .env
+          echo PR_NUMBER="\"${{ github.event.number }}\"" >> .env
+          echo PERSONAL_GITHUB_TOKEN="\"${PERSONAL_GITHUB_TOKEN}\"" >> .env
+      - name: PR Review script run
+        working-directory: src
+        run: php index.php          
