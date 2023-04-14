@@ -13,7 +13,7 @@ env:
   BITBUCKET_TOKEN: ${{ vars.BITBUCKET_TOKEN }}
   CONFLUENCE_SPACEKEY: ${{ vars.CONFLUENCE_SPACEKEY }}
   CONFLUENCE_URL: ${{ vars.CONFLUENCE_URL }}
-  GITHUB_PERSONAL_ACCESS_TOKEN: ${{ vars.GITHUB_PERSONAL_ACCESS_TOKEN }}
+  PERSONAL_GITHUB_TOKEN: ${{ vars.PERSONAL_GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -44,10 +44,13 @@ jobs:
       - name: Run PHP Script
         working-directory: src
         run: php index.php
-      - name: PR Review
+
+      - name: PR Review ENV set
         run: |
           echo PR_REVIEW="true" >> .env
           echo OWNER_AND_REPO_NAME="\"${{ github.repository }}\"" >> .env
           echo PR_NUMBER="\"${{ github.event.number }}\"" >> .env
-          echo GITHUB_PERSONAL_ACCESS_TOKEN="\"${GITHUB_PERSONAL_ACCESS_TOKEN}\"" >> .env
-          php index.php
+          echo PERSONAL_GITHUB_TOKEN="\"${PERSONAL_GITHUB_TOKEN}\"" >> .env
+      - name: PR Review script run
+        working-directory: src
+        run: php index.php          

@@ -5,7 +5,7 @@ class GitService
 {
     public function PRreview()
     {
-        $access_token = $_ENV['GITHUB_PERSONAL_ACCESS_TOKEN'];
+        $access_token = $_ENV['PERSONAL_GITHUB_TOKEN'];
         $repo = $_ENV['OWNER_AND_REPO_NAME'];
         $number = $_ENV['PR_NUMBER'];
 
