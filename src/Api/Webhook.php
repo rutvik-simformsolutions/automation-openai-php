@@ -38,9 +38,7 @@ class Webhook
         if (!empty($matches[0])) {
             $taskIds = $matches[0];
         }
-        var_dump($taskIds);
         $tasks = json_decode($bitbucketService::searchJiraTasks("AI"));
-        var_dump($tasks);
         $taskStatus = [];
         foreach ($tasks->issues as $task) {
             $taskStatus[] = [
