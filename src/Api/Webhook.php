@@ -13,7 +13,6 @@ class Webhook
 {
     public function __construct()
     {
-        var_dump($_ENV['PR_REVIEW']);
         if (isset($_ENV['PR_REVIEW'])) {
             $gitService = new GitService();
 
@@ -24,8 +23,8 @@ class Webhook
             $chatGPTService = new ChatGPTService();
             $bitbucketService = new BitbucketService();
             shell_exec('./script.sh');
-            //$recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt")." before providing output please consider the points for formatting, first do not include any heading or title, secondly use && as number for each point, third the number of output points should be equal to number of points provided to you and last every point should be explained in descriptive manner and there should be single line break after each point.";
-            $recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt");
+            $recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt")." before providing output please consider the points for formatting, first do not include any heading or title, secondly use && as number for each point, third the number of output points should be equal to number of points provided to you and last every point should be explained in descriptive manner and there should be single line break after each point.";
+            //$recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt");
             //print_r($recentCommits);
             //echo "---------------1---------------------";
 
