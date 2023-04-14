@@ -21,8 +21,8 @@ class Webhook
             $chatGPTService = new ChatGPTService();
             $bitbucketService = new BitbucketService();
             shell_exec('./script.sh');
-            //$recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt")." before providing output please consider the points for formatting, first do not include any heading or title, secondly use && as number for each point, third the number of output points should be equal to number of points provided to you and last every point should be explained in descriptive manner and there should be single line break after each point.";
-            $recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt");
+            $recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt")." before providing output please consider the points for formatting, first do not include any heading or title, secondly use && as number for each point, third the number of output points should be equal to number of points provided to you and last every point should be explained in descriptive manner and there should be single line break after each point.";
+            //$recentCommits = "Write change log documentation from this points. \n ".file_get_contents("output.txt");
             
             $openAI = $chatGPTService->openaiChat($recentCommits);
             $changeLog = array_filter(explode('&&', $openAI), fn($value) => !is_null($value) && $value !== '');
