@@ -39,6 +39,7 @@ class Webhook
                 $html .= "<tr> <td class='confluenceTd'>$log</td> <td class='confluenceTd'> &#10004; </td> </tr>";
             }
             $html .= "</tbody> </table>";*/
+            $html = '';
             if (is_array($openAI)) {
                 foreach($openAI as $log) {
                     $html .= $log;
