@@ -14,7 +14,8 @@ env:
   CONFLUENCE_SPACEKEY: ${{ vars.CONFLUENCE_SPACEKEY }}
   CONFLUENCE_URL: ${{ vars.CONFLUENCE_URL }}
   PERSONAL_GITHUB_TOKEN: ${{ vars.PERSONAL_GITHUB_TOKEN }}
-
+  JIRA_URL: ${{ vars.JIRA_URL }}
+  TASK_URL: ${{ vars.TASK_URL }}
 jobs:
   build:
 
