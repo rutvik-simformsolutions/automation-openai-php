@@ -1,6 +1,6 @@
 {
     "name": "opensource/automation-openai",
-    "description": "PCR Automation with OpenAI Code Review & Refactoring and Automated Unit Testing",
+    "description": "PCR Automation with OpenAI Code Review & Refactoring",
     "type": "project",
     "license": "MIT",
     "autoload": {
