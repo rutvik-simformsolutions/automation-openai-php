@@ -61,4 +61,48 @@ class BitbucketService
             return "Error : Curl Error". PHP_EOL . $exception->getMessage();
         }
     }
+
+    public static function searchJiraTasks(String $projectKey)
+    {
+        try {
+            if (empty($projectKey))
+                return "project key is required to fetch jira tasks !!";
+
+            $bitbucketEmail = $_ENV["BITBUCKET_EMAIL"];
+            $bitbucketToken = $_ENV["BITBUCKET_TOKEN"];
+            $jiraUrl = $_ENV["JIRA_URL"];
+
+            if (empty($bitbucketEmail) || empty($bitbucketToken) || empty($jiraUrl))
+                return "Not enough configuration data available for Jira";
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $jiraUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = [];
+            $headers[] = 'Content-Type: application/json';
+            $headers[] = "Authorization: Basic " . base64_encode("$bitbucketEmail:$bitbucketToken");
+            $data = [
+                "jql" => "Project = ".$projectKey,
+                "fields" => [ "id", "key", "summary", "assignee", "status"]
+            ];
+            $jsonData = json_encode($data);
+
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+            $result = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+
+            if ($err) {
+                throw new \Exception("Curl Error :" . $err);
+            } else {
+                return $result;
+            }
+
+        } catch (\Exception $exception) {
+            return "Error: ". PHP_EOL . $exception->getMessage();
+        }
+    }
 }
